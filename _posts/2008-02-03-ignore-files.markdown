@@ -65,6 +65,11 @@ Repo exclude
 
 Local per-repo rules can be added to the `.git/info/exclude` file in your repo.  These rules *are not committed* with the repo so they are not shared with others.  This method can be used for locally-generated files that you don't expect other users to generate, like files created by your editor.
 
+Ignoring versioned files
+------------------------
+
+Some files in a repository, which are versioned (i.e. not git-ignored), are often changed, but rarely committed. Usually these are various local configuration files that are edited, but should never be committed upstream. Git allows a user to ignore those files by assuming they are unchanged. This is done by running the `git update-index --assume-unchanged path/to/file.txt` command. Once marking a file as such, git will completely ignore any changes on that file, they will not show up when running `git status` or `git diff`, nor will they ever be committed. To make git track the file again, simply run `git update-index --no-assume-unchanged path/to/file.txt`.
+
 Links
 -----
 
